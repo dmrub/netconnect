@@ -8,3 +8,5 @@ fi
 ssh-keygen -A
 
 supervisorctl start sshd
+supervisorctl start nginx
+supervisorctl start controller

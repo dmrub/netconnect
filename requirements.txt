@@ -1,0 +1,6 @@
+# Pip requirements file
+
+psutil
+tornado
+Flask
+jinja2

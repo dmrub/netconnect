@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Connector</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+    </style>
+</head>
+<body>
+<h2>Network Connector</h2>
+<p><b>Service Base URI:</b><pre>{{request.url_root}}</pre></p>
+<table>
+    <caption><h3>Available Endpoints</h3></caption>
+    <tr>
+        <th>Path</th>
+        <th>Description</th>
+    </tr>
+    <tr><td><a href="/ports/">/ports/</a></td><td>List of all registered ports in JSON format</td></tr>
+    {% for rport in registered_ports_by_port.values() %}
+    <tr>
+        <td><a href="/proxy/{{rport.name}}/">/proxy/{{rport.name}}/...</a></td>
+        <td>{{rport.description | default("Proxy to " ~ rport.name ~ " service", true) }}</td>
+    </tr>
+    {% endfor %}
+    <tr><td><a href="/api/debug/flask/">/api/debug/flask/</a></td><td>Debug HTTP Request</td></tr>
+</table>
+</body>
+</html>
