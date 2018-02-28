@@ -20,7 +20,7 @@ ENV NC_NGINX_PORT=8080 \
 COPY docker-files/supervisord.conf /etc/supervisord.conf
 COPY docker-files/bootstrap.sh /usr/local/bin/bootstrap.sh
 COPY docker-files/entrypoint.sh /usr/local/bin/entrypoint.sh
-COPY docker-files/rshell.sh /usr/local/bin/rshell.sh
+COPY docker-files/rshell.py /usr/local/bin/rshell.py
 COPY requirements.txt /usr/src/app/requirements.txt
 
 RUN set -xe; \
@@ -32,7 +32,7 @@ RUN set -xe; \
     mkdir -p /var/run/supervisor /var/log/supervisor; \
     chmod +x /usr/local/bin/entrypoint.sh \
              /usr/local/bin/bootstrap.sh \
-             /usr/local/bin/rshell.sh; \
+             /usr/local/bin/rshell.py; \
     pip install -r /usr/src/app/requirements.txt; \
     rm /etc/motd; \
     passwd -d root; \

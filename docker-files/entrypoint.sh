@@ -82,7 +82,7 @@ if [[ -n "${NC_ROOT_AUTHORIZED_KEYS}" ]]; then
     chmod 0600 ~root/.ssh/authorized_keys
 fi
 
-NC_SHELL=/usr/local/bin/rshell.sh
+NC_SHELL=/usr/local/bin/rshell.py
 
 if [[ -n "${NC_USER}" ]]; then
     info "Create user ${NC_USER}"
