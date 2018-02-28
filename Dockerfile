@@ -50,7 +50,8 @@ RUN set -xe; \
     apk del .build-deps; \
     rm -rf /var/cache/apk/*;
 
-COPY controller.py /usr/src/app/controller.py
+COPY controller.py flask_reverse_proxy.py \
+     /usr/src/app/
 COPY templates/ /usr/src/app/templates/
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf

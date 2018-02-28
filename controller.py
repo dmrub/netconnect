@@ -19,6 +19,8 @@ import argparse
 import jinja2
 from flask import Flask, Response, url_for, render_template, jsonify, request, current_app
 from flask.json import JSONEncoder
+from flask_reverse_proxy import ReverseProxied
+
 from tornado.netutil import Resolver
 from tornado import gen
 import socket
@@ -278,6 +280,7 @@ class CustomJSONEncoder(JSONEncoder):
 
 
 app = Flask(__name__)
+app.wsgi_app = ReverseProxied(app.wsgi_app)
 app.json_encoder = CustomJSONEncoder
 control_app = Flask(__name__)
 control_app.json_encoder = CustomJSONEncoder

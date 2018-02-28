@@ -26,14 +26,14 @@
         <th>Path</th>
         <th>Description</th>
     </tr>
-    <tr><td><a href="/ports/">/ports/</a></td><td>List of all registered ports in JSON format</td></tr>
+    <tr><td><a href="ports/">/ports/</a></td><td>List of all registered ports in JSON format</td></tr>
     {% for rport in registered_ports_by_port.values() %}
     <tr>
-        <td><a href="/proxy/{{rport.name}}/">/proxy/{{rport.name}}/...</a></td>
+        <td><a href="proxy/{{rport.name}}/">/proxy/{{rport.name}}/...</a></td>
         <td>{{rport.description | default("Proxy to " ~ rport.name ~ " service", true) }}</td>
     </tr>
     {% endfor %}
-    <tr><td><a href="/api/debug/flask/">/api/debug/flask/</a></td><td>Debug HTTP Request</td></tr>
+    <tr><td><a href="api/debug/flask/">/api/debug/flask/</a></td><td>Debug HTTP Request</td></tr>
 </table>
 </body>
 </html>
