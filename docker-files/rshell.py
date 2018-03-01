@@ -136,10 +136,18 @@ Commands you can use:
 
 
 def run_commands(str):
-    for line in re.split(r"[;\n\r]", str):
-        cmd = shlex.split(line)
-        #print(repr(cmd)) #DEBUG
-        run_cmd(cmd)
+    for line in re.split(r"[\n\r]", str):
+        lexer = shlex.shlex(line, posix=True)
+        lexer.wordchars += '-'
+        cmd = []
+        for token in lexer:
+            if token == ';':
+                run_cmd(cmd)
+                del cmd[:]
+            else:
+                cmd.append(token)
+        if len(cmd) > 0:
+            run_cmd(cmd)
 
 
 if __name__ == "__main__":
