@@ -30,7 +30,7 @@ usage() {
     echo "      --help-entrypoint      Display this help and exit"
 }
 
-while [[ $# > 0 ]]; do
+while [[ $# -gt 0 ]]; do
     case "$1" in
         --help|--help-entrypoint)
             usage
@@ -87,11 +87,11 @@ NC_SHELL=/usr/local/bin/rshell.py
 if [[ -n "${NC_USER}" ]]; then
     info "Create user ${NC_USER}"
 
-    /usr/sbin/addgroup -g ${NC_GROUPID} ${NC_GROUP}
+    /usr/sbin/addgroup -g "${NC_GROUPID}" "${NC_GROUP}"
     if [[ -d "${NC_HOME}" ]]; then
-        /usr/sbin/adduser -u ${NC_USERID} -G ${NC_GROUP} -s ${NC_SHELL} -h ${NC_HOME} -H -D ${NC_USER}
+        /usr/sbin/adduser -u "${NC_USERID}" -G "${NC_GROUP}" -s "${NC_SHELL}" -h "${NC_HOME}" -H -D "${NC_USER}"
     else
-        /usr/sbin/adduser -u ${NC_USERID} -G ${NC_GROUP} -s ${NC_SHELL} -h ${NC_HOME} -D ${NC_USER}
+        /usr/sbin/adduser -u "${NC_USERID}" -G "${NC_GROUP}" -s "${NC_SHELL}" -h "${NC_HOME}" -D "${NC_USER}"
     fi
     if [[ -n "${NC_PASSWORD}" ]]; then
         info "Set ${NC_USER}'s password"
