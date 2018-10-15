@@ -38,6 +38,8 @@ RUN set -xe; \
     passwd -d root; \
     mkdir -p ~root/.ssh /etc/authorized_keys; \
     printf 'set /files/etc/ssh/sshd_config/AuthorizedKeysFile ".ssh/authorized_keys /etc/authorized_keys/%%u"\n'\
+'set /files/etc/ssh/sshd_config/ClientAliveInterval 30\n'\
+'set /files/etc/ssh/sshd_config/ClientAliveCountMax 5\n'\
 'set /files/etc/ssh/sshd_config/PermitRootLogin yes\n'\
 'set /files/etc/ssh/sshd_config/PasswordAuthentication yes\n'\
 'set /files/etc/ssh/sshd_config/Port 22\n'\
