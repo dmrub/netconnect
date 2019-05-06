@@ -23,7 +23,7 @@ server {
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection $connection_upgrade;
 
-    proxy_redirect http://$http_host/ http://$http_host/$1/;
+    # proxy_redirect http://$http_host/ http://$http_host/$1/;
     proxy_set_header Host $http_host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Scheme $real_scheme;
@@ -49,7 +49,7 @@ server {
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection $connection_upgrade;
 
-    proxy_redirect http://$http_host/ http://$http_host/proxy/$1/;
+    # proxy_redirect http://$http_host/ http://$http_host/proxy/$1/;
     proxy_set_header Host $http_host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Scheme $real_scheme;
