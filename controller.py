@@ -55,8 +55,8 @@ class PortWatcher(object):
         self._thread = threading.Thread(name='PortWatchLoop', target=self._update_ports)
         self._thread.daemon = True
         self._stop_thread = False
-        self._thread.start()
         self._ports = set()
+        self._thread.start()
         logging.info('Started port watcher')
 
     @property
